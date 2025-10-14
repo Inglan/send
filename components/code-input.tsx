@@ -28,6 +28,13 @@ export default function CodeInput() {
       maxLength={4}
       pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
       value={inputtedCode}
+      onPaste={(e) => {
+        const clipboardData = e.clipboardData.getData("text");
+
+        if (!(clipboardData.length === 4)) {
+          e.preventDefault();
+        }
+      }}
       onChange={async (value) => {
         setInputtedCode(value.toUpperCase());
         if (value.length === 4) {
