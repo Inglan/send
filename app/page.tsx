@@ -1,6 +1,7 @@
 "use client";
 
 import CodeInput from "@/components/code-input";
+import ContentDisplay from "@/components/content-display";
 import { useAppState } from "@/lib/state";
 
 export default function Home() {
@@ -8,7 +9,7 @@ export default function Home() {
 
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center">
-      {!sessionId && <CodeInput />}
+      {sessionId ? <ContentDisplay /> : <CodeInput />}
     </div>
   );
 }
