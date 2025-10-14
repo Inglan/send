@@ -46,6 +46,7 @@ export const retrieveSessionByCode = mutation({
     code: v.string(),
   },
   handler: async (ctx, args) => {
+    // Get session ID
     const sessionId = (
       await ctx.db
         .query("sessionCodes")
@@ -56,8 +57,9 @@ export const retrieveSessionByCode = mutation({
       throw new Error("Session not found");
     }
 
+    // Get session information
     const session = await ctx.db.get(sessionId);
 
-    return { session };
+    return { sessionId, session };
   },
 });
