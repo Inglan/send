@@ -24,6 +24,7 @@ export default function CodeInput() {
   return (
     <InputOTP
       disabled={loading}
+      autoFocus
       maxLength={4}
       pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
       value={inputtedCode}
