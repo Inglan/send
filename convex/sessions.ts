@@ -52,7 +52,7 @@ export const retrieveSessionByCode = mutation({
       .withIndex("by_code", (q) => q.eq("code", args.code))
       .first();
     if (!sessionCodeObject) {
-      throw new Error("Session not found");
+      throw new Error("Session not found: " + args.code);
     }
 
     // Get session information
