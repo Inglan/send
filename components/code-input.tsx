@@ -48,8 +48,8 @@ export default function CodeInput() {
             }),
             {
               loading: "Loading...",
-              success: "Code verified!",
-              error: "Invalid code",
+              success: "Code found",
+              error: "Code not found",
             },
           );
         }
