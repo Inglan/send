@@ -11,9 +11,11 @@ import { useState } from "react";
 
 export default function CodeInput() {
   const [inputtedCode, setInputtedCode] = useState("");
+  const [loading, setLoading] = useState(false);
 
   return (
     <InputOTP
+      disabled={loading}
       maxLength={4}
       pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
       value={inputtedCode}
