@@ -40,3 +40,24 @@ export const createWithCode = mutation({
     return { sessionId, sessionCode };
   },
 });
+
+export const retrieveSessionByCode = mutation({
+  args: {
+    code: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const sessionId = (
+      await ctx.db
+        .query("sessionCodes")
+        .withIndex("by_code", (q) => q.eq("code", args.code))
+        .first()
+    )?.session;
+    if (!sessionId) {
+      throw new Error("Session not found");
+    }
+
+    const session = await ctx.db.get(sessionId);
+
+    return { session };
+  },
+});
