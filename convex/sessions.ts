@@ -16,7 +16,7 @@ export const createWithCode = mutation({
 
     // Generate code
     async function generateSessionCode() {
-      sessionCode = Math.random().toString(36).substring(2, 7).toUpperCase();
+      sessionCode = Math.random().toString(36).substring(2, 6).toUpperCase();
 
       // Check if code already exists
       const existingCode = await ctx.db
