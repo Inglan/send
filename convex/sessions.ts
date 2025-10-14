@@ -47,20 +47,21 @@ export const retrieveSessionByCode = mutation({
   },
   handler: async (ctx, args) => {
     // Get session ID
-    const sessionId = (
-      await ctx.db
-        .query("sessionCodes")
-        .withIndex("by_code", (q) => q.eq("code", args.code))
-        .first()
-    )?.session;
-    if (!sessionId) {
+    const sessionCodeObject = await ctx.db
+      .query("sessionCodes")
+      .withIndex("by_code", (q) => q.eq("code", args.code))
+      .first();
+    if (!sessionCodeObject) {
       throw new Error("Session not found");
     }
 
     // Get session information
-    const session = await ctx.db.get(sessionId);
+    const session = await ctx.db.get(sessionCodeObject.session);
+    if (!session) {
+      throw new Error("Session not found");
+    }
 
-    ctx.db.delete(sessionId);
+    ctx.db.delete(sessionCodeObject._id);
 
     return session;
   },
