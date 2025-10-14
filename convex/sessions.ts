@@ -1,4 +1,4 @@
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 export const createWithCode = mutation({
@@ -64,5 +64,19 @@ export const retrieveSessionByCode = mutation({
     ctx.db.delete(sessionCodeObject._id);
 
     return session;
+  },
+});
+
+export const getContent = query({
+  args: {
+    id: v.id("sessions"),
+  },
+  handler: async (ctx, args) => {
+    const session = await ctx.db.get(args.id);
+    if (!session) {
+      throw new Error("Session not found");
+    }
+
+    return session.content;
   },
 });
