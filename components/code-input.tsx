@@ -11,6 +11,7 @@ import { useAppState } from "@/lib/state";
 import { useMutation } from "convex/react";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function CodeInput() {
   const getSessionId = useMutation(api.sessions.retrieveSessionByCode);
@@ -29,12 +30,28 @@ export default function CodeInput() {
       onChange={async (value) => {
         setInputtedCode(value.toUpperCase());
         if (value.length === 4) {
-          setLoading(true);
-          const session = await getSessionId({ code: value });
-          if (session) {
-            setSessionId(session._id);
-          }
-          setLoading(false);
+          toast.promise(
+            new Promise<void>((resolve: () => void, reject: () => void) => {
+              setLoading(true);
+              getSessionId({ code: value.toUpperCase() })
+                .then((session) => {
+                  setSessionId(session._id);
+                  setInputtedCode("");
+                  resolve();
+                })
+                .catch(() => {
+                  reject();
+                })
+                .finally(() => {
+                  setLoading(false);
+                });
+            }),
+            {
+              loading: "Loading...",
+              success: "Code verified!",
+              error: "Invalid code",
+            },
+          );
         }
       }}
     >
