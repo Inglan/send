@@ -19,7 +19,15 @@ export default function CodeInput() {
       maxLength={4}
       pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
       value={inputtedCode}
-      onChange={(value) => setInputtedCode(value.toUpperCase())}
+      onChange={(value) => {
+        setInputtedCode(value.toUpperCase());
+        if (value.length === 4) {
+          setLoading(true);
+          setTimeout(() => {
+            setLoading(false);
+          }, 2000);
+        }
+      }}
     >
       <InputOTPGroup>
         <InputOTPSlot index={0} />
