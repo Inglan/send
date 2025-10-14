@@ -1,3 +1,5 @@
+![](https://hackatime-badge.hackclub.com/U0923H02Y3B/send)
+
 # send
 <sup>i really need a better name...</sup>
 
