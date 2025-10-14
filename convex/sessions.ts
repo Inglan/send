@@ -6,25 +6,37 @@ export const createWithCode = mutation({
     content: v.string(),
   },
   handler: async (ctx, args) => {
+    // Create session
     const sessionId = await ctx.db.insert("sessions", {
       content: args.content,
     });
+
+    // Initialise blank session code
     let sessionCode = "";
+
+    // Generate code
     async function generateSessionCode() {
       sessionCode = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+      // Check if code already exists
       const existingCode = await ctx.db
         .query("sessionCodes")
         .withIndex("by_code", (q) => q.eq("code", sessionCode))
         .collect();
       if (existingCode.length > 0) {
+        // Retry generating a new code
         await generateSessionCode();
       }
     }
     await generateSessionCode();
+
+    // Add session code to database
     await ctx.db.insert("sessionCodes", {
       code: sessionCode,
       session: sessionId,
     });
+
+    // Return session information
     return { sessionId, sessionCode };
   },
 });
