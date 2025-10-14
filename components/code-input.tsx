@@ -15,11 +15,13 @@ import { toast } from "sonner";
 
 export default function CodeInput() {
   const getSessionId = useMutation(api.sessions.retrieveSessionByCode);
+  const createSessionMutation = useMutation(api.sessions.createWithCode);
 
   const [inputtedCode, setInputtedCode] = useState("");
   const [loading, setLoading] = useState(false);
 
   const setSessionId = useAppState((state) => state.setSessionId);
+  const createSession = useAppState((state) => state.createSession);
 
   return (
     <InputOTP
@@ -33,6 +35,7 @@ export default function CodeInput() {
 
         if (!(clipboardData.length === 4)) {
           e.preventDefault();
+          createSession(clipboardData, createSessionMutation);
         }
       }}
       onChange={async (value) => {
