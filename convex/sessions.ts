@@ -60,6 +60,8 @@ export const retrieveSessionByCode = mutation({
     // Get session information
     const session = await ctx.db.get(sessionId);
 
+    ctx.db.delete(sessionId);
+
     return session;
   },
 });
