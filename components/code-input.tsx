@@ -35,7 +35,11 @@ export default function CodeInput() {
 
         if (!(clipboardData.length === 4)) {
           e.preventDefault();
-          createSession(clipboardData, createSessionMutation);
+          setLoading(true);
+          toast.promise(createSession(clipboardData, createSessionMutation), {
+            loading: "Loading...",
+            error: "Something went wrong",
+          });
         }
       }}
       onChange={async (value) => {
