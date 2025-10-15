@@ -11,6 +11,8 @@ interface AppState {
   ) => Promise<void>;
   sendDrawerOpen: boolean;
   setSendDrawerOpen: (open: boolean) => void;
+  settingsDrawerOpen: boolean;
+  setSettingsDrawerOpen: (open: boolean) => void;
 }
 
 export const useAppState = create<AppState>((set) => ({
@@ -22,4 +24,6 @@ export const useAppState = create<AppState>((set) => ({
   },
   sendDrawerOpen: false,
   setSendDrawerOpen: (open) => set({ sendDrawerOpen: open }),
+  settingsDrawerOpen: false,
+  setSettingsDrawerOpen: (open) => set({ settingsDrawerOpen: open }),
 }));
