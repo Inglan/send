@@ -17,6 +17,8 @@ export default function Home() {
 }
 
 function Header() {
+  const setSendDrawerOpen = useAppState((state) => state.setSendDrawerOpen);
+
   return (
     <div className="w-full p-2">
       <div className="container mx-auto flex flex-row gap-2 items-center p-2 bg-card rounded-lg">
@@ -28,7 +30,7 @@ function Header() {
         <Button variant="ghost">
           <Settings /> Settings
         </Button>
-        <Button>
+        <Button onClick={() => setSendDrawerOpen(true)}>
           <Send /> Send
         </Button>
       </div>
