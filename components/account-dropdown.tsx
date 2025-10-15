@@ -32,6 +32,7 @@ import { api } from "@/convex/_generated/api";
 export function AccountDropdown() {
   const convexAuth = useConvexAuth();
   const setLoading = useAppState((state) => state.setLoading);
+  const loading = useAppState((state) => state.loading);
 
   return (
     <DropdownMenu>
@@ -71,15 +72,17 @@ export function AccountDropdown() {
             </Button>
           </TooltipTrigger>
         </DropdownMenuTrigger>
-        <TooltipContent>
-          <div className="flex items-center gap-2">
-            {convexAuth.isLoading
-              ? "Loading..."
-              : convexAuth.isAuthenticated
-                ? "Account"
-                : "Sign in"}
-          </div>
-        </TooltipContent>
+        {!loading && (
+          <TooltipContent>
+            <div className="flex items-center gap-2">
+              {convexAuth.isLoading
+                ? "Loading..."
+                : convexAuth.isAuthenticated
+                  ? "Account"
+                  : "Sign in"}
+            </div>
+          </TooltipContent>
+        )}
       </Tooltip>
       <DropdownMenuContent>
         <Authenticated>
