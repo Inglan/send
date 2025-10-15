@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Authenticated, AuthLoading, Unauthenticated } from "convex/react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { AccountDropdown } from "./account-dropdown";
 
 export function Header() {
   const setSendDrawerOpen = useAppState((state) => state.setSendDrawerOpen);
@@ -79,48 +80,5 @@ export function Header() {
         </Tooltip>
       </div>
     </div>
-  );
-}
-
-function AccountDropdown() {
-  return (
-    <DropdownMenu>
-      <Tooltip>
-        <DropdownMenuTrigger asChild>
-          <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <Authenticated>
-                <span className="sr-only">Account</span>
-                <CircleUser />
-              </Authenticated>
-              <Unauthenticated>
-                <span className="sr-only">Sign in</span>
-                <LogIn />
-              </Unauthenticated>
-              <AuthLoading>
-                <Skeleton className="size-5 rounded-md" />
-              </AuthLoading>
-            </Button>
-          </TooltipTrigger>
-        </DropdownMenuTrigger>
-        <TooltipContent>
-          <div className="flex items-center gap-2">Source code</div>
-        </TooltipContent>
-      </Tooltip>
-      <DropdownMenuContent>
-        <Authenticated>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Log out</DropdownMenuItem>
-        </Authenticated>
-        <Unauthenticated>
-          <DropdownMenuItem>Google</DropdownMenuItem>
-          <DropdownMenuItem>Github</DropdownMenuItem>
-        </Unauthenticated>
-        <AuthLoading>
-          <DropdownMenuLabel>Loading</DropdownMenuLabel>
-        </AuthLoading>
-      </DropdownMenuContent>
-    </DropdownMenu>
   );
 }
