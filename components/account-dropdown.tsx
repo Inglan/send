@@ -79,7 +79,9 @@ export function AccountDropdown() {
         <Authenticated>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Log out</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => authClient.signOut()}>
+            Sign out
+          </DropdownMenuItem>
         </Authenticated>
         <Unauthenticated>
           <DropdownMenuItem>Google</DropdownMenuItem>
