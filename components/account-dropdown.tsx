@@ -23,7 +23,12 @@ import {
   useQuery,
 } from "convex/react";
 import { Skeleton } from "@/components/ui/skeleton";
-import { motion, AnimatePresence } from "motion/react";
+import {
+  motion,
+  AnimatePresence,
+  TargetAndTransition,
+  VariantLabels,
+} from "motion/react";
 import { useAppState } from "@/lib/state";
 import { toast } from "sonner";
 import { api } from "@/convex/_generated/api";
@@ -36,6 +41,15 @@ export function AccountDropdown() {
   const loading = useAppState((state) => state.loading);
   const user = useQuery(api.auth.getCurrentUser);
 
+  const hidden: TargetAndTransition | VariantLabels | undefined = {
+    opacity: 0,
+    scale: 0.7,
+  };
+  const visible: TargetAndTransition | VariantLabels | undefined = {
+    opacity: 1,
+    scale: 1,
+  };
+
   return (
     <DropdownMenu>
       <Tooltip>
@@ -47,9 +61,9 @@ export function AccountDropdown() {
                   <motion.div
                     key="loading"
                     className="absolute"
-                    exit={{ opacity: 0 }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    exit={hidden}
+                    initial={hidden}
+                    animate={visible}
                   >
                     <Skeleton className="size-5 rounded-md" />
                   </motion.div>
@@ -57,9 +71,9 @@ export function AccountDropdown() {
                   <motion.div
                     key="user"
                     className="absolute"
-                    exit={{ opacity: 0 }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    exit={hidden}
+                    initial={hidden}
+                    animate={visible}
                   >
                     <span className="sr-only">Account</span>
                     <CircleUser />
@@ -68,9 +82,9 @@ export function AccountDropdown() {
                   <motion.div
                     key="signin"
                     className="absolute"
-                    exit={{ opacity: 0 }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    exit={hidden}
+                    initial={hidden}
+                    animate={visible}
                   >
                     <span className="sr-only">Sign in</span>
                     <LogIn />
