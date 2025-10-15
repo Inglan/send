@@ -41,6 +41,12 @@ export const createAuth = (
         disableDeleteAnonymousUser: true,
       }),
     ],
+    session: {
+      cookieCache: {
+        enabled: true,
+        maxAge: 5 * 60,
+      },
+    },
   });
 };
 
