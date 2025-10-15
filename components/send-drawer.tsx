@@ -17,7 +17,7 @@ export function SendDrawer() {
   const setOpen = useAppState((state) => state.setSendDrawerOpen);
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
+    <Drawer open={open} onOpenChange={setOpen} shouldScaleBackground={true}>
       <DrawerContent className="h-full">
         <DrawerHeader>
           <DrawerTitle></DrawerTitle>
