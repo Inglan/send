@@ -8,6 +8,7 @@ import { SendDrawer } from "@/components/send-drawer";
 import { SettingsDrawer } from "@/components/settings-drawer";
 import { Loader } from "@/components/loader";
 import { AutoAuth } from "@/components/auto-auth";
+import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -24,26 +25,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistMono.className} antialiased`}>
-        <div vaul-drawer-wrapper="" className="bg-background min-h-[100vh]">
-          <ConvexClientProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              {children}
-              <AutoAuth />
-              <SendDrawer />
-              <SettingsDrawer />
-              <Toaster />
-              <Loader />
-            </ThemeProvider>
-          </ConvexClientProvider>
-        </div>
-      </body>
-    </html>
+    <ConvexAuthNextjsServerProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${geistMono.className} antialiased`}>
+          <div vaul-drawer-wrapper="" className="bg-background min-h-[100vh]">
+            <ConvexClientProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                {children}
+                <AutoAuth />
+                <SendDrawer />
+                <SettingsDrawer />
+                <Toaster />
+                <Loader />
+              </ThemeProvider>
+            </ConvexClientProvider>
+          </div>
+        </body>
+      </html>
+    </ConvexAuthNextjsServerProvider>
   );
 }
