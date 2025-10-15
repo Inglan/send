@@ -24,9 +24,12 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { motion, AnimatePresence } from "motion/react";
 import { authClient } from "@/lib/auth-client";
+import { useAppState } from "@/lib/state";
 
 export function AccountDropdown() {
   const convexAuth = useConvexAuth();
+  const setLoading = useAppState((state) => state.setLoading);
+
   return (
     <DropdownMenu>
       <Tooltip>
@@ -87,6 +90,7 @@ export function AccountDropdown() {
           <DropdownMenuItem>Google</DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => {
+              setLoading(true);
               authClient.signIn.social({ provider: "github" });
             }}
           >
