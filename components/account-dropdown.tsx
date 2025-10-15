@@ -23,6 +23,7 @@ import {
 } from "convex/react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { motion, AnimatePresence } from "motion/react";
+import { authClient } from "@/lib/auth-client";
 
 export function AccountDropdown() {
   const convexAuth = useConvexAuth();
@@ -76,7 +77,13 @@ export function AccountDropdown() {
         </Authenticated>
         <Unauthenticated>
           <DropdownMenuItem>Google</DropdownMenuItem>
-          <DropdownMenuItem>Github</DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              authClient.signIn.social({ provider: "github" });
+            }}
+          >
+            Github
+          </DropdownMenuItem>
         </Unauthenticated>
         <AuthLoading>
           <DropdownMenuLabel>Loading</DropdownMenuLabel>
