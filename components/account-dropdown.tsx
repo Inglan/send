@@ -43,11 +43,19 @@ export function AccountDropdown() {
 
   const hidden: TargetAndTransition | VariantLabels | undefined = {
     opacity: 0,
-    scale: 0.7,
+    scale: 0.8,
+    filter: "blur(2px)",
+    transition: {
+      ease: "easeOut",
+    },
   };
   const visible: TargetAndTransition | VariantLabels | undefined = {
     opacity: 1,
     scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      ease: "easeOut",
+    },
   };
 
   return (
