@@ -4,7 +4,6 @@ import CodeInput from "@/components/code-input";
 import { Header } from "@/components/header";
 import { Spinner } from "@/components/ui/spinner";
 import { useAppState } from "@/lib/state";
-import { convex } from "@convex-dev/better-auth/plugins";
 import { useConvexAuth } from "convex/react";
 import {
   motion,
