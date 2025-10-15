@@ -31,18 +31,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ConvexClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <SendDrawer />
-            <Toaster />
-          </ThemeProvider>
-        </ConvexClientProvider>
+        <div vaul-drawer-wrapper="" className="bg-background min-h-[100vh]">
+          <ConvexClientProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+              <SendDrawer />
+              <Toaster />
+            </ThemeProvider>
+          </ConvexClientProvider>
+        </div>
       </body>
     </html>
   );
