@@ -1,9 +1,7 @@
 "use client";
 
 import CodeInput from "@/components/code-input";
-import ContentDisplay from "@/components/content-display";
 import { Header } from "@/components/header";
-import { Button } from "@/components/ui/button";
 import { useAppState } from "@/lib/state";
 
 export default function Home() {
