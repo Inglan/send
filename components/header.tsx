@@ -85,7 +85,7 @@ export function Header() {
             <div className="flex items-center gap-2">
               <KbdGroup>
                 <Kbd>⌘</Kbd>
-                <Kbd>Enter</Kbd>
+                <Kbd>⏎</Kbd>
               </KbdGroup>
             </div>
           </TooltipContent>
