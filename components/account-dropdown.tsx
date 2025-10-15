@@ -28,6 +28,7 @@ import { useAppState } from "@/lib/state";
 import { toast } from "sonner";
 import { api } from "@/convex/_generated/api";
 import { CircleUser, LogIn } from "lucide-react";
+import { useAuthActions } from "@convex-dev/auth/react";
 
 export function AccountDropdown() {
   const convexAuth = useConvexAuth();
@@ -106,6 +107,7 @@ export function AccountDropdown() {
 function UserMenu() {
   const user = useQuery(api.auth.getCurrentUser);
   const setLoading = useAppState((state) => state.setLoading);
+  const { signIn, signOut } = useAuthActions();
 
   return (
     <>
@@ -115,6 +117,7 @@ function UserMenu() {
           <DropdownMenuItem
             onClick={() => {
               setLoading(true);
+              void signIn("github");
             }}
           >
             Github
