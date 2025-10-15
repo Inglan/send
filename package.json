@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@auth/core": "0.37.0",
+    "@convex-dev/auth": "^0.0.90",
     "@convex-dev/better-auth": "^0.9.5",
     "@convex-dev/rate-limiter": "^0.2.13",
     "@radix-ui/react-dialog": "^1.1.15",
