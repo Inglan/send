@@ -88,17 +88,7 @@ export function AccountDropdown() {
         <Authenticated>
           <UserMenu />
         </Authenticated>
-        <Unauthenticated>
-          <DropdownMenuItem>Google</DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              setLoading(true);
-              authClient.signIn.social({ provider: "github" });
-            }}
-          >
-            Github
-          </DropdownMenuItem>
-        </Unauthenticated>
+        <Unauthenticated></Unauthenticated>
         <AuthLoading>
           <DropdownMenuLabel>Loading</DropdownMenuLabel>
         </AuthLoading>
@@ -111,24 +101,52 @@ function UserMenu() {
   const user = useQuery(api.auth.getCurrentUser);
   const setLoading = useAppState((state) => state.setLoading);
 
+  if (!user)
+    return (
+      <>
+        <DropdownMenuLabel>
+          <Skeleton className="w-full h-[20px]"></Skeleton>
+        </DropdownMenuLabel>
+        <DropdownMenuLabel>
+          <Skeleton className="w-full h-[20px]"></Skeleton>
+        </DropdownMenuLabel>
+      </>
+    );
+
   return (
     <>
-      <DropdownMenuLabel>
-        {user?.name}
-        <br />
-        <span className="text-xs">{user?.email}</span>
-      </DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem
-        onClick={async () => {
-          setLoading(true);
-          await authClient.signOut();
-          setLoading(false);
-          toast.success("Signed out successfully!");
-        }}
-      >
-        Sign out
-      </DropdownMenuItem>
+      {user?.isAnonymous ? (
+        <>
+          <DropdownMenuItem>Google</DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              setLoading(true);
+              authClient.signIn.social({ provider: "github" });
+            }}
+          >
+            Github
+          </DropdownMenuItem>
+        </>
+      ) : (
+        <>
+          <DropdownMenuLabel>
+            {user?.name}
+            <br />
+            <span className="text-xs">{user?.email}</span>
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem
+            onClick={async () => {
+              setLoading(true);
+              await authClient.signOut();
+              setLoading(false);
+              toast.success("Signed out successfully!");
+            }}
+          >
+            Sign out
+          </DropdownMenuItem>
+        </>
+      )}
     </>
   );
 }
