@@ -1,11 +1,15 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
+import { rateLimiter } from "./ratelimit";
 
 export const createWithCode = mutation({
   args: {
     content: v.string(),
   },
   handler: async (ctx, args) => {
+    await rateLimiter.limit(ctx, "createSession", {
+      throws: true,
+    });
     // Create session
     const sessionId = await ctx.db.insert("sessions", {
       content: args.content,
