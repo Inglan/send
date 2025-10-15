@@ -11,6 +11,9 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { useAppState } from "@/lib/state";
+import { Textarea } from "./ui/textarea";
+import { Button } from "./ui/button";
+import { Kbd, KbdGroup } from "./ui/kbd";
 
 export function SendDrawer() {
   const open = useAppState((state) => state.sendDrawerOpen);
@@ -22,8 +25,20 @@ export function SendDrawer() {
         <DrawerHeader>
           <DrawerTitle>Send</DrawerTitle>
         </DrawerHeader>
-        <DrawerFooter>
-          <DrawerClose>Cancel</DrawerClose>
+        <div className="h-full w-full p-2">
+          <Textarea className="h-full max-w-2xl mx-auto" />
+        </div>
+        <DrawerFooter className="flex flex-row justify-end max-w-2xl mx-auto w-full">
+          <DrawerClose asChild>
+            <Button variant="ghost">Cancel</Button>
+          </DrawerClose>
+          <Button variant="outline">
+            Send{" "}
+            <KbdGroup>
+              <Kbd>⌘</Kbd>
+              <Kbd>⏎</Kbd>
+            </KbdGroup>
+          </Button>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
