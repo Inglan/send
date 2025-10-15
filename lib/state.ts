@@ -9,6 +9,8 @@ interface AppState {
     text: string,
     createSessionMutation: ReactMutation<typeof api.sessions.createWithCode>,
   ) => Promise<void>;
+  sendDialogOpen: boolean;
+  setSendDialogOpen: (open: boolean) => void;
 }
 
 export const useAppState = create<AppState>((set) => ({
@@ -18,4 +20,6 @@ export const useAppState = create<AppState>((set) => ({
     const session = await createSessionMutation({ content: text });
     set({ sessionId: session.sessionId });
   },
+  sendDialogOpen: false,
+  setSendDialogOpen: (open) => set({ sendDialogOpen: open }),
 }));
