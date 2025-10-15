@@ -89,6 +89,15 @@ export function AccountDropdown() {
           <UserMenu />
         </Authenticated>
         <Unauthenticated>
+          <DropdownMenuItem
+            onClick={async () => {
+              setLoading(true);
+              await authClient.signIn.anonymous();
+              setLoading(false);
+            }}
+          >
+            Anonymous
+          </DropdownMenuItem>
           <DropdownMenuItem>Google</DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => {
