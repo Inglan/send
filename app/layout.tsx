@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { Toaster } from "@/components/ui/sonner";
 import { SendDrawer } from "@/components/send-drawer";
+import { SettingsDrawer } from "@/components/settings-drawer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
             >
               {children}
               <SendDrawer />
+              <SettingsDrawer />
               <Toaster />
             </ThemeProvider>
           </ConvexClientProvider>

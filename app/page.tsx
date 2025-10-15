@@ -18,6 +18,9 @@ export default function Home() {
 
 function Header() {
   const setSendDrawerOpen = useAppState((state) => state.setSendDrawerOpen);
+  const setSettingsDrawerOpen = useAppState(
+    (state) => state.setSettingsDrawerOpen,
+  );
 
   return (
     <div className="w-full p-2">
@@ -27,7 +30,7 @@ function Header() {
         <Button variant="ghost">
           <Code /> Source Code
         </Button>
-        <Button variant="ghost">
+        <Button variant="ghost" onClick={() => setSettingsDrawerOpen(true)}>
           <Settings /> Settings
         </Button>
         <Button onClick={() => setSendDrawerOpen(true)}>
