@@ -44,6 +44,8 @@ export function AccountDropdown() {
               <AnimatePresence>
                 {convexAuth.isLoading ? (
                   <motion.div
+                    key="loading"
+                    className="absolute"
                     exit={{ opacity: 0 }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -52,6 +54,8 @@ export function AccountDropdown() {
                   </motion.div>
                 ) : convexAuth.isAuthenticated && !user?.isAnonymous ? (
                   <motion.div
+                    key="user"
+                    className="absolute"
                     exit={{ opacity: 0 }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -61,6 +65,8 @@ export function AccountDropdown() {
                   </motion.div>
                 ) : (
                   <motion.div
+                    key="signin"
+                    className="absolute"
                     exit={{ opacity: 0 }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
