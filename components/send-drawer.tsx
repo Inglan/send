@@ -30,7 +30,9 @@ export function SendDrawer() {
         </div>
         <DrawerFooter className="flex flex-row justify-end max-w-2xl mx-auto w-full">
           <DrawerClose asChild>
-            <Button variant="ghost">Cancel</Button>
+            <Button variant="ghost">
+              Cancel <Kbd>Esc</Kbd>
+            </Button>
           </DrawerClose>
           <Button variant="outline">
             Send{" "}
