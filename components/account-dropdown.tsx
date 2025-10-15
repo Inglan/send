@@ -82,7 +82,13 @@ export function AccountDropdown() {
         <Authenticated>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => authClient.signOut()}>
+          <DropdownMenuItem
+            onClick={async () => {
+              setLoading(true);
+              await authClient.signOut();
+              setLoading(false);
+            }}
+          >
             Sign out
           </DropdownMenuItem>
         </Authenticated>
