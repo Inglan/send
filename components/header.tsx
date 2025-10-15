@@ -6,6 +6,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
 
 export function Header() {
   const setSendDrawerOpen = useAppState((state) => state.setSendDrawerOpen);
@@ -25,7 +26,7 @@ export function Header() {
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Source code</p>
+            <div className="flex items-center gap-2">Source code</div>
           </TooltipContent>
         </Tooltip>
         <Tooltip>
@@ -39,12 +40,30 @@ export function Header() {
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Settings</p>
+            <div className="flex items-center gap-2">
+              Settings
+              <KbdGroup>
+                <Kbd>⌘</Kbd>
+                <Kbd>,</Kbd>
+              </KbdGroup>
+            </div>
           </TooltipContent>
         </Tooltip>
-        <Button onClick={() => setSendDrawerOpen(true)}>
-          <Send /> Send
-        </Button>
+        <Tooltip>
+          <TooltipTrigger>
+            <Button onClick={() => setSendDrawerOpen(true)}>
+              <Send /> Send
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <div className="flex items-center gap-2">
+              <KbdGroup>
+                <Kbd>⌘</Kbd>
+                <Kbd>Enter</Kbd>
+              </KbdGroup>
+            </div>
+          </TooltipContent>
+        </Tooltip>
       </div>
     </div>
   );
