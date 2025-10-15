@@ -56,10 +56,7 @@ export default function Home() {
               key="content"
               exit={hidden}
               initial={hidden}
-              animate={{
-                ...visible,
-                transition: { ...visible.transition, delay: 0.2 },
-              }}
+              animate={visible}
             >
               <CodeInput />
             </motion.div>
