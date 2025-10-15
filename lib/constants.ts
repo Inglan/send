@@ -1,1 +1,1 @@
-export const CODE_LENGTH = 5
+export const CODE_LENGTH = 5;
