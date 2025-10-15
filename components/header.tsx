@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Authenticated, AuthLoading, Unauthenticated } from "convex/react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function Header() {
   const setSendDrawerOpen = useAppState((state) => state.setSendDrawerOpen);
@@ -96,6 +97,9 @@ function AccountMenu() {
                 <span className="sr-only">Sign in</span>
                 <LogIn />
               </Unauthenticated>
+              <AuthLoading>
+                <Skeleton className="size-5 rounded-md" />
+              </AuthLoading>
             </Button>
           </TooltipTrigger>
         </DropdownMenuTrigger>
