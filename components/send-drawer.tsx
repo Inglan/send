@@ -13,8 +13,8 @@ import {
 import { useAppState } from "@/lib/state";
 
 export function SendDrawer() {
-  const open = useAppState((state) => state.sendDialogOpen);
-  const setOpen = useAppState((state) => state.setSendDialogOpen);
+  const open = useAppState((state) => state.sendDrawerOpen);
+  const setOpen = useAppState((state) => state.setSendDrawerOpen);
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
