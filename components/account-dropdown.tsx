@@ -66,7 +66,13 @@ export function AccountDropdown() {
           </TooltipTrigger>
         </DropdownMenuTrigger>
         <TooltipContent>
-          <div className="flex items-center gap-2">Source code</div>
+          <div className="flex items-center gap-2">
+            {convexAuth.isLoading
+              ? "Loading..."
+              : convexAuth.isAuthenticated
+                ? "Account"
+                : "Sign in"}
+          </div>
         </TooltipContent>
       </Tooltip>
       <DropdownMenuContent>
