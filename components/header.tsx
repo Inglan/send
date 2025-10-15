@@ -20,7 +20,7 @@ export function Header() {
         <div className="px-2 text-xl">Send</div>
         <div className="grow"></div>
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger asChild>
             <Button variant="ghost" size="icon">
               <span className="sr-only">Source code</span>
               <Code />
@@ -31,7 +31,7 @@ export function Header() {
           </TooltipContent>
         </Tooltip>
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger asChild>
             <Button
               variant="ghost"
               onClick={() => setSettingsDrawerOpen(true)}
@@ -52,7 +52,7 @@ export function Header() {
           </TooltipContent>
         </Tooltip>
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger asChild>
             <Button onClick={() => setSendDrawerOpen(true)}>
               <Send /> Send
             </Button>
