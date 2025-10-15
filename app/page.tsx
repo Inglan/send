@@ -37,7 +37,6 @@ export default function Home() {
       <Header />
       <div className="w-full h-full flex flex-col justify-center items-center">
         <AnimatePresence>
-          {" "}
           {(convexAuth.isLoading || !convexAuth.isAuthenticated) && (
             <motion.div
               className="absolute"
