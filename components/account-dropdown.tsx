@@ -134,6 +134,7 @@ function UserMenu() {
           <DropdownMenuItem
             onClick={async () => {
               setLoading(true);
+              await signOut();
               setLoading(false);
               toast.success("Signed out successfully!");
             }}
