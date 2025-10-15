@@ -14,6 +14,7 @@ A minimal webapp that lets you transfer text between devices. You can paste or t
 - [ ] Keyboard shorcuts
 - [ ] Animations
 - [ ] Large code display
+- [ ] Anonymous auth
 
 # Ideas
 - [ ] Editing after sending
