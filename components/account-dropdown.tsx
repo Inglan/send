@@ -1,7 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CircleUser, LogIn } from "lucide-react";
+import {
+  AccountCircle,
+  Login,
+} from "@nine-thirty-five/material-symbols-react/rounded";
+
 import {
   Tooltip,
   TooltipContent,
@@ -57,7 +61,7 @@ export function AccountDropdown() {
                     animate={{ opacity: 1 }}
                   >
                     <span className="sr-only">Account</span>
-                    <CircleUser />
+                    <AccountCircle />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -66,7 +70,7 @@ export function AccountDropdown() {
                     animate={{ opacity: 1 }}
                   >
                     <span className="sr-only">Sign in</span>
-                    <LogIn />
+                    <Login />
                   </motion.div>
                 )}
               </AnimatePresence>
