@@ -50,7 +50,7 @@ export default function CodeInput() {
               setLoading(true);
               getSessionId({ code: value.toUpperCase() })
                 .then((session) => {
-                  setSessionId(session._id);
+                  setSessionId(session.sessionId);
                   setInputtedCode("");
                   resolve();
                 })

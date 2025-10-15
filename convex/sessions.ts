@@ -41,7 +41,7 @@ export const createWithCode = mutation({
     });
 
     // Return session information
-    return { sessionId, sessionCode };
+    return { sessionId };
   },
 });
 
@@ -67,7 +67,7 @@ export const retrieveSessionByCode = mutation({
 
     ctx.db.delete(sessionCodeObject._id);
 
-    return session;
+    return { sessionId: session._id };
   },
 });
 
