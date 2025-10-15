@@ -17,7 +17,7 @@ export default function Home() {
 }
 
 function Header() {
-  const setSendDrawerOpen = useAppState((state) => state.setSendDrawerOpen);
+  const setSendDrawerOpen = useAppState((state) => state.setSendDialogOpen);
 
   return (
     <div className="w-full p-2">
