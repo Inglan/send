@@ -107,7 +107,7 @@ export function AccountDropdown() {
             <div className="flex items-center gap-2">
               {convexAuth.isLoading
                 ? "Loading..."
-                : convexAuth.isAuthenticated
+                : convexAuth.isAuthenticated && !user?.isAnonymous
                   ? "Account"
                   : "Sign in"}
             </div>
