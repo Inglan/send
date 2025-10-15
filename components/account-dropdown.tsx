@@ -33,6 +33,7 @@ export function AccountDropdown() {
   const convexAuth = useConvexAuth();
   const setLoading = useAppState((state) => state.setLoading);
   const loading = useAppState((state) => state.loading);
+  const user = useQuery(api.auth.getCurrentUser);
 
   return (
     <DropdownMenu>
@@ -49,7 +50,7 @@ export function AccountDropdown() {
                   >
                     <Skeleton className="size-5 rounded-md" />
                   </motion.div>
-                ) : convexAuth.isAuthenticated ? (
+                ) : convexAuth.isAuthenticated && !user?.isAnonymous ? (
                   <motion.div
                     exit={{ opacity: 0 }}
                     initial={{ opacity: 0 }}
