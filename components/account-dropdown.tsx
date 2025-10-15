@@ -46,7 +46,7 @@ export function AccountDropdown() {
     scale: 0.8,
     filter: "blur(2px)",
     transition: {
-      ease: "easeOut",
+      ease: [0.165, 0.84, 0.44, 1.0],
     },
   };
   const visible: TargetAndTransition | VariantLabels | undefined = {
@@ -54,7 +54,7 @@ export function AccountDropdown() {
     scale: 1,
     filter: "blur(0px)",
     transition: {
-      ease: "easeOut",
+      ease: [0.165, 0.84, 0.44, 1.0],
     },
   };
 
