@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="bg-card w-full p-3">
-        <div className="container mx-auto flex flex-row gap-2">
+        <div className="container mx-auto flex flex-row gap-2 items-center">
           <div className="text-xl">send</div>
           <div className="grow"></div>
           <Button variant="ghost">
