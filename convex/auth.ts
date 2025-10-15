@@ -1,9 +1,10 @@
 import { convexAuth, getAuthUserId } from "@convex-dev/auth/server";
 import { Anonymous } from "@convex-dev/auth/providers/Anonymous";
 import { query } from "./_generated/server";
+import GitHub from "@auth/core/providers/github";
 
 export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
-  providers: [Anonymous],
+  providers: [Anonymous, GitHub],
 });
 
 export const getCurrentUser = query({
