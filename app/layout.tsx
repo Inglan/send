@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { Toaster } from "@/components/ui/sonner";
+import { SendDrawer } from "@/components/send-drawer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <SendDrawer />
             <Toaster />
           </ThemeProvider>
         </ConvexClientProvider>
