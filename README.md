@@ -10,7 +10,7 @@ A minimal webapp that lets you transfer text between devices. You can paste or t
 - [ ] Actually diplay code
 - [ ] Cleaning up/auto deleting
 - [ ] Copy text
-- [ ] Rate limiting
+- [x] Rate limiting
 - [ ] Keyboard shorcuts
 - [ ] Animations
 - [ ] Large code display
