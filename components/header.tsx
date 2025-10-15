@@ -22,6 +22,7 @@ export function Header() {
         <Tooltip>
           <TooltipTrigger>
             <Button variant="ghost" size="icon">
+              <span className="sr-only">Source code</span>
               <Code />
             </Button>
           </TooltipTrigger>
@@ -36,6 +37,7 @@ export function Header() {
               onClick={() => setSettingsDrawerOpen(true)}
               size="icon"
             >
+              <span className="sr-only">Settings</span>
               <Settings />
             </Button>
           </TooltipTrigger>
