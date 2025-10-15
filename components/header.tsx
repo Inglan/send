@@ -18,6 +18,7 @@ import {
 import { Authenticated, AuthLoading, Unauthenticated } from "convex/react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { AccountDropdown } from "./account-dropdown";
+import Link from "next/link";
 
 export function Header() {
   const setSendDrawerOpen = useAppState((state) => state.setSendDrawerOpen);
@@ -32,9 +33,15 @@ export function Header() {
         <div className="grow"></div>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <span className="sr-only">Source code</span>
-              <Code />
+            <Button variant="ghost" size="icon" asChild>
+              <Link
+                href="https://github.com/Inglan/send"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="sr-only">Source code</span>
+                <Code />
+              </Link>
             </Button>
           </TooltipTrigger>
           <TooltipContent>
