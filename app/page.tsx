@@ -10,8 +10,11 @@ export default function Home() {
   const sessionId = useAppState((state) => state.sessionId);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col h-screen">
       <Header />
+      <div className="w-full h-full flex flex-col justify-center items-center">
+        <CodeInput />
+      </div>
     </div>
   );
 }
