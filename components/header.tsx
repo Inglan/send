@@ -40,7 +40,7 @@ export function Header() {
             <div className="flex items-center gap-2">Source code</div>
           </TooltipContent>
         </Tooltip>
-        <AccountMenu />
+        <AccountDropdown />
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
@@ -82,7 +82,7 @@ export function Header() {
   );
 }
 
-function AccountMenu() {
+function AccountDropdown() {
   return (
     <DropdownMenu>
       <Tooltip>
