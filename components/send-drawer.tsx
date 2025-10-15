@@ -26,7 +26,7 @@ export function SendDrawer() {
           <DrawerTitle>Send</DrawerTitle>
         </DrawerHeader>
         <div className="h-full w-full p-2">
-          <Textarea className="h-full max-w-2xl mx-auto" />
+          <Textarea autoFocus className="h-full max-w-2xl mx-auto" />
         </div>
         <DrawerFooter className="flex flex-row justify-end max-w-2xl mx-auto w-full">
           <DrawerClose asChild>
