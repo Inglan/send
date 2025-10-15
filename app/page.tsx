@@ -18,9 +18,9 @@ export default function Home() {
 
 function Header() {
   return (
-    <div className="bg-card w-full">
-      <div className="container mx-auto flex flex-row gap-2 items-center p-2">
-        <div className="text-xl">send</div>
+    <div className="w-full p-2">
+      <div className="container mx-auto flex flex-row gap-2 items-center p-2 bg-card rounded-lg">
+        <div className="px-2 text-xl">Send</div>
         <div className="grow"></div>
         <Button variant="ghost">
           <Code /> Source Code
