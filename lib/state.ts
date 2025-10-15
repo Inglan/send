@@ -13,6 +13,8 @@ interface AppState {
   setSendDrawerOpen: (open: boolean) => void;
   settingsDrawerOpen: boolean;
   setSettingsDrawerOpen: (open: boolean) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 export const useAppState = create<AppState>((set) => ({
@@ -26,4 +28,6 @@ export const useAppState = create<AppState>((set) => ({
   setSendDrawerOpen: (open) => set({ sendDrawerOpen: open }),
   settingsDrawerOpen: false,
   setSettingsDrawerOpen: (open) => set({ settingsDrawerOpen: open }),
+  loading: false,
+  setLoading: (loading) => set({ loading }),
 }));
