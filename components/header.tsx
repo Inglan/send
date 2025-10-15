@@ -1,6 +1,6 @@
 import { useAppState } from "@/lib/state";
 import { Button } from "@/components/ui/button";
-import { CircleUser, Code, Send, Settings } from "lucide-react";
+import { CircleUser, Code, LogIn, Send, Settings } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -15,6 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Authenticated, AuthLoading, Unauthenticated } from "convex/react";
 
 export function Header() {
   const setSendDrawerOpen = useAppState((state) => state.setSendDrawerOpen);
@@ -87,8 +88,14 @@ function AccountMenu() {
         <DropdownMenuTrigger asChild>
           <TooltipTrigger asChild>
             <Button variant="ghost" size="icon">
-              <span className="sr-only">Account</span>
-              <CircleUser />
+              <Authenticated>
+                <span className="sr-only">Account</span>
+                <CircleUser />
+              </Authenticated>
+              <Unauthenticated>
+                <span className="sr-only">Sign in</span>
+                <LogIn />
+              </Unauthenticated>
             </Button>
           </TooltipTrigger>
         </DropdownMenuTrigger>
@@ -97,9 +104,15 @@ function AccountMenu() {
         </TooltipContent>
       </Tooltip>
       <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>Log out</DropdownMenuItem>
+        <Authenticated>
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>Log out</DropdownMenuItem>
+        </Authenticated>
+        <Unauthenticated>
+          <DropdownMenuItem>Google</DropdownMenuItem>
+          <DropdownMenuItem>Github</DropdownMenuItem>
+        </Unauthenticated>
       </DropdownMenuContent>
     </DropdownMenu>
   );
