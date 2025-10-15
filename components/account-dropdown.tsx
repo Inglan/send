@@ -24,7 +24,6 @@ import {
 } from "convex/react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { motion, AnimatePresence } from "motion/react";
-import { authClient } from "@/lib/auth-client";
 import { useAppState } from "@/lib/state";
 import { toast } from "sonner";
 import { api } from "@/convex/_generated/api";
@@ -34,7 +33,7 @@ export function AccountDropdown() {
   const convexAuth = useConvexAuth();
   const setLoading = useAppState((state) => state.setLoading);
   const loading = useAppState((state) => state.loading);
-  const user = useQuery(api.auth.getCurrentUser);
+  // const user = useQuery(api.auth.getCurrentUser);
 
   return (
     <DropdownMenu>
@@ -99,7 +98,7 @@ export function AccountDropdown() {
 }
 
 function UserMenu() {
-  const user = useQuery(api.auth.getCurrentUser);
+  // const user = useQuery(api.auth.getCurrentUser);
   const setLoading = useAppState((state) => state.setLoading);
 
   return (
