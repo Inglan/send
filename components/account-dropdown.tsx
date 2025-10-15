@@ -1,10 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  AccountCircle,
-  Login,
-} from "@nine-thirty-five/material-symbols-react/rounded";
 
 import {
   Tooltip,
@@ -32,6 +28,7 @@ import { authClient } from "@/lib/auth-client";
 import { useAppState } from "@/lib/state";
 import { toast } from "sonner";
 import { api } from "@/convex/_generated/api";
+import { CircleUser, LogIn } from "lucide-react";
 
 export function AccountDropdown() {
   const convexAuth = useConvexAuth();
@@ -61,7 +58,7 @@ export function AccountDropdown() {
                     animate={{ opacity: 1 }}
                   >
                     <span className="sr-only">Account</span>
-                    <AccountCircle />
+                    <CircleUser />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -70,7 +67,7 @@ export function AccountDropdown() {
                     animate={{ opacity: 1 }}
                   >
                     <span className="sr-only">Sign in</span>
-                    <Login />
+                    <LogIn />
                   </motion.div>
                 )}
               </AnimatePresence>

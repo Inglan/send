@@ -1,10 +1,6 @@
 import { useAppState } from "@/lib/state";
 import { Button } from "@/components/ui/button";
-import {
-  Code,
-  Send,
-  Settings,
-} from "@nine-thirty-five/material-symbols-react/rounded";
+import { Code, Send, Settings } from "lucide-react";
 
 import {
   Tooltip,
