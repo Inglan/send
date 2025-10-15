@@ -37,7 +37,9 @@ export const createAuth = (
     plugins: [
       // The Convex plugin is required for Convex compatibility
       convex(),
-      anonymous(),
+      anonymous({
+        disableDeleteAnonymousUser: true,
+      }),
     ],
   });
 };

@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { SendDrawer } from "@/components/send-drawer";
 import { SettingsDrawer } from "@/components/settings-drawer";
 import { Loader } from "@/components/loader";
+import { AutoAuth } from "@/components/auto-auth";
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               {children}
+              <AutoAuth />
               <SendDrawer />
               <SettingsDrawer />
               <Toaster />
