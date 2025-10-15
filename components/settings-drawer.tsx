@@ -20,7 +20,7 @@ export function SettingsDrawer() {
     <Drawer open={open} onOpenChange={setOpen} shouldScaleBackground={true}>
       <DrawerContent className="h-full">
         <DrawerHeader>
-          <DrawerTitle></DrawerTitle>
+          <DrawerTitle>Settings</DrawerTitle>
         </DrawerHeader>
         <DrawerFooter>
           <DrawerClose>Cancel</DrawerClose>

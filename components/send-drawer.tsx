@@ -20,7 +20,7 @@ export function SendDrawer() {
     <Drawer open={open} onOpenChange={setOpen} shouldScaleBackground={true}>
       <DrawerContent className="h-full">
         <DrawerHeader>
-          <DrawerTitle></DrawerTitle>
+          <DrawerTitle>Send</DrawerTitle>
         </DrawerHeader>
         <DrawerFooter>
           <DrawerClose>Cancel</DrawerClose>
