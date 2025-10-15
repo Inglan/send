@@ -18,7 +18,7 @@ export function SendDrawer() {
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerContent>
+      <DrawerContent className="h-full">
         <DrawerHeader>
           <DrawerTitle></DrawerTitle>
         </DrawerHeader>
