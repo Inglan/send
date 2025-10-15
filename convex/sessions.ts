@@ -1,6 +1,7 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 import { rateLimiter } from "./ratelimit";
+import { CODE_LENGTH } from "../lib/constants";
 
 export const createWithCode = mutation({
   args: {
@@ -20,7 +21,10 @@ export const createWithCode = mutation({
 
     // Generate code
     async function generateSessionCode() {
-      sessionCode = Math.random().toString(36).substring(2, 6).toUpperCase();
+      sessionCode = Math.random()
+        .toString(36)
+        .substring(2, CODE_LENGTH + 2)
+        .toUpperCase();
 
       // Check if code already exists
       const existingCode = await ctx.db
