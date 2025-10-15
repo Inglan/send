@@ -32,7 +32,6 @@ import { api } from "@/convex/_generated/api";
 export function AccountDropdown() {
   const convexAuth = useConvexAuth();
   const setLoading = useAppState((state) => state.setLoading);
-  const user = useQuery(api.auth.getCurrentUser);
 
   return (
     <DropdownMenu>
@@ -84,22 +83,7 @@ export function AccountDropdown() {
       </Tooltip>
       <DropdownMenuContent>
         <Authenticated>
-          <DropdownMenuLabel>
-            {user?.name}
-            <br />
-            <span className="text-xs">{user?.email}</span>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={async () => {
-              setLoading(true);
-              await authClient.signOut();
-              setLoading(false);
-              toast.success("Signed out successfully!");
-            }}
-          >
-            Sign out
-          </DropdownMenuItem>
+          <UserMenu />
         </Authenticated>
         <Unauthenticated>
           <DropdownMenuItem>Google</DropdownMenuItem>
@@ -117,5 +101,31 @@ export function AccountDropdown() {
         </AuthLoading>
       </DropdownMenuContent>
     </DropdownMenu>
+  );
+}
+
+function UserMenu() {
+  const user = useQuery(api.auth.getCurrentUser);
+  const setLoading = useAppState((state) => state.setLoading);
+
+  return (
+    <>
+      <DropdownMenuLabel>
+        {user?.name}
+        <br />
+        <span className="text-xs">{user?.email}</span>
+      </DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem
+        onClick={async () => {
+          setLoading(true);
+          await authClient.signOut();
+          setLoading(false);
+          toast.success("Signed out successfully!");
+        }}
+      >
+        Sign out
+      </DropdownMenuItem>
+    </>
   );
 }
