@@ -136,7 +136,14 @@ function UserMenu() {
     <>
       {user?.isAnonymous ? (
         <>
-          <DropdownMenuItem>Google</DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              setLoading(true);
+              void signIn("google");
+            }}
+          >
+            Google
+          </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => {
               setLoading(true);
