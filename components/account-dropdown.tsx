@@ -33,7 +33,7 @@ export function AccountDropdown() {
   const convexAuth = useConvexAuth();
   const setLoading = useAppState((state) => state.setLoading);
   const loading = useAppState((state) => state.loading);
-  // const user = useQuery(api.auth.getCurrentUser);
+  const user = useQuery(api.auth.getCurrentUser);
 
   return (
     <DropdownMenu>
@@ -98,7 +98,7 @@ export function AccountDropdown() {
 }
 
 function UserMenu() {
-  // const user = useQuery(api.auth.getCurrentUser);
+  const user = useQuery(api.auth.getCurrentUser);
   const setLoading = useAppState((state) => state.setLoading);
 
   return (
@@ -109,7 +109,6 @@ function UserMenu() {
           <DropdownMenuItem
             onClick={() => {
               setLoading(true);
-              authClient.signIn.social({ provider: "github" });
             }}
           >
             Github
@@ -126,7 +125,6 @@ function UserMenu() {
           <DropdownMenuItem
             onClick={async () => {
               setLoading(true);
-              await authClient.signOut();
               setLoading(false);
               toast.success("Signed out successfully!");
             }}
