@@ -38,26 +38,7 @@ export function Header() {
             <div className="flex items-center gap-2">Source code</div>
           </TooltipContent>
         </Tooltip>
-        <DropdownMenu>
-          <Tooltip>
-            <DropdownMenuTrigger asChild>
-              <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <span className="sr-only">Account</span>
-                  <CircleUser />
-                </Button>
-              </TooltipTrigger>
-            </DropdownMenuTrigger>
-            <TooltipContent>
-              <div className="flex items-center gap-2">Source code</div>
-            </TooltipContent>
-          </Tooltip>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Log out</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <AccountMenu />
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
@@ -96,5 +77,30 @@ export function Header() {
         </Tooltip>
       </div>
     </div>
+  );
+}
+
+function AccountMenu() {
+  return (
+    <DropdownMenu>
+      <Tooltip>
+        <DropdownMenuTrigger asChild>
+          <TooltipTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <span className="sr-only">Account</span>
+              <CircleUser />
+            </Button>
+          </TooltipTrigger>
+        </DropdownMenuTrigger>
+        <TooltipContent>
+          <div className="flex items-center gap-2">Source code</div>
+        </TooltipContent>
+      </Tooltip>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>Log out</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
