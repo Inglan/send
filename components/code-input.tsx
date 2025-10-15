@@ -71,10 +71,15 @@ export default function CodeInput() {
       }}
     >
       <InputOTPGroup>
-        <InputOTPSlot index={0} />
-        <InputOTPSlot index={1} />
-        <InputOTPSlot index={2} />
-        <InputOTPSlot index={3} />
+        {Array(4)
+          .fill(null)
+          .map((_, index) => (
+            <InputOTPSlot
+              className="size-12 text-2xl"
+              key={index}
+              index={index}
+            />
+          ))}
       </InputOTPGroup>
     </InputOTP>
   );
