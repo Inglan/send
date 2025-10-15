@@ -20,16 +20,19 @@ import {
   AuthLoading,
   Unauthenticated,
   useConvexAuth,
+  useQuery,
 } from "convex/react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { motion, AnimatePresence } from "motion/react";
 import { authClient } from "@/lib/auth-client";
 import { useAppState } from "@/lib/state";
 import { toast } from "sonner";
+import { api } from "@/convex/_generated/api";
 
 export function AccountDropdown() {
   const convexAuth = useConvexAuth();
   const setLoading = useAppState((state) => state.setLoading);
+  const user = useQuery(api.auth.getCurrentUser);
 
   return (
     <DropdownMenu>
@@ -81,7 +84,11 @@ export function AccountDropdown() {
       </Tooltip>
       <DropdownMenuContent>
         <Authenticated>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuLabel>
+            {user?.name}
+            <br />
+            <span className="text-xs">{user?.email}</span>
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem
             onClick={async () => {
