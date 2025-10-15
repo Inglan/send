@@ -6,11 +6,32 @@ import { Spinner } from "@/components/ui/spinner";
 import { useAppState } from "@/lib/state";
 import { convex } from "@convex-dev/better-auth/plugins";
 import { useConvexAuth } from "convex/react";
-import { motion, AnimatePresence } from "motion/react";
+import {
+  motion,
+  AnimatePresence,
+  TargetAndTransition,
+  VariantLabels,
+} from "motion/react";
 
 export default function Home() {
   const sessionId = useAppState((state) => state.sessionId);
   const convexAuth = useConvexAuth();
+  const hidden: TargetAndTransition | VariantLabels | undefined = {
+    opacity: 0,
+    scale: 0.9,
+    filter: "blur(2px)",
+    transition: {
+      ease: "easeOut",
+    },
+  };
+  const visible: TargetAndTransition | VariantLabels | undefined = {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      ease: "easeOut",
+    },
+  };
 
   return (
     <div className="flex flex-col h-screen">
@@ -22,9 +43,9 @@ export default function Home() {
             <motion.div
               className="absolute"
               key="spinner"
-              exit={{ opacity: 0 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              exit={hidden}
+              initial={hidden}
+              animate={visible}
             >
               <Spinner />
             </motion.div>
@@ -33,9 +54,12 @@ export default function Home() {
             <motion.div
               className="absolute"
               key="content"
-              exit={{ opacity: 0 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 0.2 } }}
+              exit={hidden}
+              initial={hidden}
+              animate={{
+                ...visible,
+                transition: { ...visible.transition, delay: 0.2 },
+              }}
             >
               <CodeInput />
             </motion.div>
