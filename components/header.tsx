@@ -65,7 +65,7 @@ export function Header() {
         </Tooltip>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button onClick={() => setSendDrawerOpen(true)}>
+            <Button variant="outline" onClick={() => setSendDrawerOpen(true)}>
               <Send /> Send
             </Button>
           </TooltipTrigger>
