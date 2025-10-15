@@ -25,6 +25,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { motion, AnimatePresence } from "motion/react";
 import { authClient } from "@/lib/auth-client";
 import { useAppState } from "@/lib/state";
+import { toast } from "sonner";
 
 export function AccountDropdown() {
   const convexAuth = useConvexAuth();
@@ -87,6 +88,7 @@ export function AccountDropdown() {
               setLoading(true);
               await authClient.signOut();
               setLoading(false);
+              toast.success("Signed out successfully!");
             }}
           >
             Sign out
