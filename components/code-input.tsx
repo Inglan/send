@@ -7,6 +7,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { api } from "@/convex/_generated/api";
+import { CODE_LENGTH } from "@/lib/constants";
 import { useAppState } from "@/lib/state";
 import { useMutation } from "convex/react";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
@@ -27,13 +28,13 @@ export default function CodeInput() {
     <InputOTP
       disabled={loading}
       autoFocus
-      maxLength={4}
+      maxLength={CODE_LENGTH}
       pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
       value={inputtedCode}
       onPaste={(e) => {
         const clipboardData = e.clipboardData.getData("text");
 
-        if (!(clipboardData.length === 4)) {
+        if (!(clipboardData.length === CODE_LENGTH)) {
           e.preventDefault();
           setLoading(true);
           toast.promise(createSession(clipboardData, createSessionMutation), {
@@ -44,7 +45,7 @@ export default function CodeInput() {
       }}
       onChange={async (value) => {
         setInputtedCode(value.toUpperCase());
-        if (value.length === 4) {
+        if (value.length === CODE_LENGTH) {
           toast.promise(
             new Promise<void>((resolve: () => void, reject: () => void) => {
               setLoading(true);
@@ -71,7 +72,7 @@ export default function CodeInput() {
       }}
     >
       <InputOTPGroup>
-        {Array(4)
+        {Array(CODE_LENGTH)
           .fill(null)
           .map((_, index) => (
             <InputOTPSlot
