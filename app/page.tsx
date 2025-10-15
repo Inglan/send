@@ -3,6 +3,7 @@
 import CodeInput from "@/components/code-input";
 import { Header } from "@/components/header";
 import { Spinner } from "@/components/ui/spinner";
+import { EASE_CURVE } from "@/lib/constants";
 import { useAppState } from "@/lib/state";
 import { useConvexAuth } from "convex/react";
 import {
@@ -20,7 +21,7 @@ export default function Home() {
     scale: 0.9,
     filter: "blur(2px)",
     transition: {
-      ease: [0.165, 0.84, 0.44, 1.0],
+      ease: EASE_CURVE,
     },
   };
   const visible: TargetAndTransition | VariantLabels | undefined = {
@@ -28,7 +29,7 @@ export default function Home() {
     scale: 1,
     filter: "blur(0px)",
     transition: {
-      ease: [0.165, 0.84, 0.44, 1.0],
+      ease: EASE_CURVE,
     },
   };
 

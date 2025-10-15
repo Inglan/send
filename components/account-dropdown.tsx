@@ -34,6 +34,7 @@ import { toast } from "sonner";
 import { api } from "@/convex/_generated/api";
 import { CircleUser, LogIn } from "lucide-react";
 import { useAuthActions } from "@convex-dev/auth/react";
+import { EASE_CURVE } from "@/lib/constants";
 
 export function AccountDropdown() {
   const convexAuth = useConvexAuth();
@@ -46,7 +47,7 @@ export function AccountDropdown() {
     scale: 0.8,
     filter: "blur(2px)",
     transition: {
-      ease: [0.165, 0.84, 0.44, 1.0],
+      ease: EASE_CURVE,
     },
   };
   const visible: TargetAndTransition | VariantLabels | undefined = {
@@ -54,7 +55,7 @@ export function AccountDropdown() {
     scale: 1,
     filter: "blur(0px)",
     transition: {
-      ease: [0.165, 0.84, 0.44, 1.0],
+      ease: EASE_CURVE,
     },
   };
 
