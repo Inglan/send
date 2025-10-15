@@ -117,6 +117,9 @@ function AccountMenu() {
           <DropdownMenuItem>Google</DropdownMenuItem>
           <DropdownMenuItem>Github</DropdownMenuItem>
         </Unauthenticated>
+        <AuthLoading>
+          <DropdownMenuLabel>Loading</DropdownMenuLabel>
+        </AuthLoading>
       </DropdownMenuContent>
     </DropdownMenu>
   );
