@@ -1,12 +1,20 @@
 import { useAppState } from "@/lib/state";
 import { Button } from "@/components/ui/button";
-import { Code, Send, Settings } from "lucide-react";
+import { CircleUser, Code, Send, Settings } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Header() {
   const setSendDrawerOpen = useAppState((state) => state.setSendDrawerOpen);
@@ -30,6 +38,26 @@ export function Header() {
             <div className="flex items-center gap-2">Source code</div>
           </TooltipContent>
         </Tooltip>
+        <DropdownMenu>
+          <Tooltip>
+            <DropdownMenuTrigger asChild>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <span className="sr-only">Account</span>
+                  <CircleUser />
+                </Button>
+              </TooltipTrigger>
+            </DropdownMenuTrigger>
+            <TooltipContent>
+              <div className="flex items-center gap-2">Source code</div>
+            </TooltipContent>
+          </Tooltip>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Log out</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
