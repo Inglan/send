@@ -105,18 +105,6 @@ function UserMenu() {
   const user = useQuery(api.auth.getCurrentUser);
   const setLoading = useAppState((state) => state.setLoading);
 
-  if (!user)
-    return (
-      <>
-        <DropdownMenuLabel>
-          <Skeleton className="w-full h-[20px]"></Skeleton>
-        </DropdownMenuLabel>
-        <DropdownMenuLabel>
-          <Skeleton className="w-full h-[20px]"></Skeleton>
-        </DropdownMenuLabel>
-      </>
-    );
-
   return (
     <>
       {user?.isAnonymous ? (
