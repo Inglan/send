@@ -88,7 +88,6 @@ export function AccountDropdown() {
         <Authenticated>
           <UserMenu />
         </Authenticated>
-        <Unauthenticated></Unauthenticated>
         <AuthLoading>
           <DropdownMenuLabel>Loading</DropdownMenuLabel>
         </AuthLoading>
