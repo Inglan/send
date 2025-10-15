@@ -21,7 +21,7 @@ export default function Home() {
     scale: 0.9,
     filter: "blur(2px)",
     transition: {
-      ease: "easeOut",
+      ease: [0.165, 0.84, 0.44, 1.0],
     },
   };
   const visible: TargetAndTransition | VariantLabels | undefined = {
@@ -29,7 +29,7 @@ export default function Home() {
     scale: 1,
     filter: "blur(0px)",
     transition: {
-      ease: "easeOut",
+      ease: [0.165, 0.84, 0.44, 1.0],
     },
   };
 
